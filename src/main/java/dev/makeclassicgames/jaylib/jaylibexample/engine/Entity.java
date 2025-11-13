@@ -6,8 +6,10 @@ public class Entity implements GameObject{
     protected Sprite sprite;
     protected Vector2D position;
     protected Vector2D velocity;
+    protected Collider collider;
     private float rotation;
     private static final float DEG2RAD= (float) (Math.PI / 180f);
+
 
     protected Direction direction;
 
@@ -15,11 +17,13 @@ public class Entity implements GameObject{
         this.position= new Vector2D();
         this.velocity = new Vector2D();
         this.rotation=0.0f;
+        this.collider=null;
     }
     public Entity(Vector2D position){
         this.position = position;
         this.velocity= new Vector2D();
         this.rotation=0.0f;
+        this.collider=null;
     }
 
     public Vector2D getPosition() {
@@ -62,6 +66,14 @@ public class Entity implements GameObject{
         this.sprite = sprite;
     }
 
+    public Collider getCollider(){
+        return this.collider;
+    }
+
+    public void setCollider(Collider collider){
+        this.collider= collider;
+    }
+
     @Override
     public void update() {
         float dt = GetFrameTime();
@@ -73,6 +85,14 @@ public class Entity implements GameObject{
     @Override
     public void draw() {
         this.sprite.draw(this.position,this.rotation);
+    }
+
+    public boolean collideWith(Collider other, Vector2D otherPosition){
+        if(this.collider==null || other == null){
+            return false;
+        }
+        return CheckCollisionRecs(this.collider.getColliderRectangle(this.position),
+                other.getColliderRectangle(otherPosition));
     }
 
 }

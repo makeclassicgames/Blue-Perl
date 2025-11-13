@@ -4,6 +4,9 @@ import dev.makeclassicgames.jaylib.jaylibexample.engine.Entity;
 import dev.makeclassicgames.jaylib.jaylibexample.engine.Sprite;
 import dev.makeclassicgames.jaylib.jaylibexample.game.resources.ResourceIdentifier;
 
+import static com.raylib.Colors.*;
+import static com.raylib.Raylib.*;
+
 public class Player extends Entity {
 
     private int lives;
@@ -13,6 +16,8 @@ public class Player extends Entity {
     public static final int DOWN_ANIM =0;
     public static final int LEFT_ANIM =1;
     public static final int RIGHT_ANIM =2;
+
+    private static final int MAX_HEALTH = 100;
 
 
     public Player(){
@@ -30,7 +35,10 @@ public class Player extends Entity {
     }
 
     public void drawPlayer(){
+        float width = (this.health*64)/100.0f;
         this.draw();
+        DrawRectangle((int) this.position.getX()-48, (int) this.position.getY()-32, (int) width,5,RED);
+
     }
 
 }
