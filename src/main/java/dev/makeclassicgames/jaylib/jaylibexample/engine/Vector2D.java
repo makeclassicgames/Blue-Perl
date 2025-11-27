@@ -16,6 +16,10 @@ public class Vector2D {
         this.y = y;
     }
 
+    public Vector2D(Vector2D vector2D){
+        this.x= vector2D.x;
+        this.y= vector2D.y;
+    }
     public float getX() {
         return x;
     }
@@ -30,5 +34,11 @@ public class Vector2D {
 
     public void setY(float y) {
         this.y = y;
+    }
+
+    public Vector2D normalize(){
+        float sum_square = this.x*this.x+this.y*this.y;
+        float length = Double.valueOf(Math.sqrt(sum_square)).floatValue();
+        return new Vector2D(this.x/length, this.y/length);
     }
 }

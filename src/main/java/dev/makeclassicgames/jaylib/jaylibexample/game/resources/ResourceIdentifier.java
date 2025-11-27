@@ -4,5 +4,6 @@ public enum ResourceIdentifier {
     PLAYER,
     ENEMY,
     BULLET,
-    MAP;
+    MAP,
+    BULLET_ENEMY;
 }

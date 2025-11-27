@@ -7,7 +7,7 @@ import static com.raylib.Raylib.*;
 
 public class Launcher {
     public static void main(String[] args) {
-        InitWindow(640,480, "Hola");
+        InitWindow(640,480, "Blue Perl");
         SetTargetFPS(60);
         Game game = new Game();
         while(!WindowShouldClose()){

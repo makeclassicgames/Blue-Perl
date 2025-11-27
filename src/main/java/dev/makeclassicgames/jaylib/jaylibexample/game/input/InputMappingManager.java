@@ -14,6 +14,14 @@ public class InputMappingManager {
 
     public void updateEvents() {
 
+        if (IsKeyDown(KEY_UP) || IsGamepadButtonDown(0, GAMEPAD_BUTTON_LEFT_FACE_UP)
+            || GetGamepadAxisMovement(0,GAMEPAD_AXIS_LEFT_Y)<0) {
+            this.inputEvents.add(InputEvent.UP);
+        }
+        if (IsKeyDown(KEY_DOWN) || IsGamepadButtonDown(0, GAMEPAD_BUTTON_LEFT_FACE_DOWN)
+            || GetGamepadAxisMovement(0,GAMEPAD_AXIS_LEFT_Y)>0) {
+            this.inputEvents.add(InputEvent.DOWN);
+        }
         if (IsKeyDown(KEY_LEFT) || IsGamepadButtonDown(0, GAMEPAD_BUTTON_LEFT_FACE_LEFT)
         || GetGamepadAxisMovement(0,GAMEPAD_AXIS_LEFT_X)<0) {
             this.inputEvents.add(InputEvent.LEFT);
